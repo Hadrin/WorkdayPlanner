@@ -69,3 +69,25 @@ textarea {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+
+.timeblock{
+  height: 100px;
+  width: 100%;
+  border: 1px solid #000000;
+}
+
+.timeblock input{
+  height: 100px;
+  width: 80%;
+}
+
+.timeblock button{
+  height: 100px;
+  width: 19%;
+  vertical-align: top;
+}
+
+.timeblock textarea{
+  height: 100px;
+  width: 80%;
+}
