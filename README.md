@@ -9,3 +9,5 @@ Hours in the future will be blue
 Any text inside the boxes which is not saved by using the button will be discarded when the page closes
 Any text which is saved will be retained in local storage.
 ![screenshot](https://i.imgur.com/WXVXH64.png "Screenshot of page")
+
+A live version of the site can be found at https://hadrin.github.io/WorkdayPlanner/
