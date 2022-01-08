@@ -1,3 +1,4 @@
+//Create variables for handling elements
 var input9 = document.querySelector("#todo9");
 var input10 = document.querySelector("#todo10");
 var input11 = document.querySelector("#todo11");
@@ -18,6 +19,9 @@ var but3 = document.querySelector("#button3");
 var but4 = document.querySelector("#button4");
 var but5 = document.querySelector("#button5");
 
+var currentDay = document.querySelector("#currentDay");
+
+//Adds click handlers to all save buttons
 but9.addEventListener("click", function(){clickHandler("9")}, false);
 but10.addEventListener("click", function(){clickHandler("10")}, false);
 but11.addEventListener("click", function(){clickHandler("11")}, false);
@@ -28,6 +32,7 @@ but3.addEventListener("click", function(){clickHandler("3")}, false);
 but4.addEventListener("click", function(){clickHandler("4")}, false);
 but5.addEventListener("click", function(){clickHandler("5")}, false);
 
+//Attempts to load saved data, and if successful populates loaded data into fields
 try{input9.value = window.localStorage.getItem(9);} catch {}
 try{input10.value = window.localStorage.getItem(10);} catch{}
 try{input11.value = window.localStorage.getItem(11);} catch{}
@@ -38,7 +43,33 @@ try{input3.value = window.localStorage.getItem(3);} catch{}
 try{input4.value = window.localStorage.getItem(4);} catch{}
 try{input5.value = window.localStorage.getItem(5);} catch{}
 
+//Writes the current date to the header
+let daysOfWeekArray = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+var dayOfWeek = daysOfWeekArray[moment().day()];
+var month = (moment().month() + 1);
+var dateOfMonth = moment().date();
 
+currentDay.textContent = ("Today is " + dayOfWeek + ", " + month + "-" + dateOfMonth);
+
+//Color textarea according to whether it is present, in the past, or in the future
+let hourArray = [input9, input10, input11, input12, input1, input2, input3, input4, input5];
+var now = moment().hour();
+now = (now - 9);
+for(var i = 0; i < 9; i++){
+    if(i < now){
+        hourArray[i].setAttribute("style", "background-color:#FF0000");
+    } else if(i == now){
+        hourArray[i].setAttribute("style", "background-color:#FFFF00");
+    } else {
+        hourArray[i].setAttribute("style", "background-color:#00FFFF");
+    }
+}
+
+
+
+//Function directs and loads data based on which button was clicked, which is determined
+//by the value of n passed to it
+//The try/catch blocks are necessary to read empty fields, which is used to erase data
 function clickHandler(n) {
     switch (n) {
         case "9":
@@ -78,12 +109,14 @@ function clickHandler(n) {
             break;
 
         default:
+            //Runs if an n value outside of 9-5 is used. Should not show up.
             alert("An Error Has Occurred. Please Reload Your Page And Try Again." + n);
 
 
     }
 }
 
+//Writes the value of data to a key-value localStorage pair, with a key of n
 function saveHandler(n, data) { 
     console.log("Saving data: " + data + " to key: " + n);
     window.localStorage.setItem(n, data);

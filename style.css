@@ -74,11 +74,13 @@ textarea {
   height: 100px;
   width: 100%;
   border: 1px solid #000000;
+  background-color: #77dd77;
 }
 
-.timeblock input{
-  height: 100px;
+.timeblock textarea{
+  height: 95px;
   width: 80%;
+  border: 1px dashed #000000;
 }
 
 .timeblock button{
